@@ -3,16 +3,19 @@ import Botton from "@/components/botton/Botton";
 import InputText from "@/components/textField/InputText";
 import Image from "next/image";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
-
     const { push } = useRouter();
+    const [loder, setLoder] = useState(false);
+    const [message, setMessage] = useState("");
+
     const login = async (e) => {
+        setLoder(true);
         e.preventDefault();
         axios
             .post(`${process.env.NEXT_PUBLIC_BLABLA_URL}/login`, {
@@ -20,12 +23,21 @@ function Login() {
                 password: password,
             })
             .then((res) => {
-                localStorage.setItem("auth", JSON.stringify(res.data));
-                console.log(res);
-                push("/");
+                if (res.status != 200) {
+                    console.log(res.data);
+                    setMessage("Email or Password Wrong !!");
+                } else {
+                    setMessage(res.data.message);
+                    localStorage.setItem("auth", JSON.stringify(res.data));
+                    setTimeout(() => {
+                        push("/");
+                    }, 2000);
+                    setLoder(false);
+                }
             })
             .catch((err) => {
-                console.log(err);
+                setMessage(err.response.data);
+                setLoder(false);
             });
     };
 
@@ -37,9 +49,14 @@ function Login() {
                         {" "}
                         LOGIN{" "}
                     </p>
+                    <span className=" text-primary font-medium ">
+                        {message}
+                    </span>
                     <form className="flex flex-col gap-10 " onSubmit={login}>
                         <InputText
                             type="text"
+                            name="email"
+                            required={true}
                             placeholder="Enter Your Email"
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -48,6 +65,8 @@ function Login() {
                                 type={
                                     showPassword == false ? `password` : "text"
                                 }
+                                required={true}
+                                name="password"
                                 placeholder="Enter Your Password"
                                 onChange={(e) => setPassword(e.target.value)}
                             />
@@ -60,7 +79,10 @@ function Login() {
                                 {showPassword == false ? "show" : "hide"}{" "}
                             </p>
                         </div>
-                        <Botton text="SIGN IN" type="submit" />
+                        <Botton
+                            text={loder ? `LODING ...` : `SIGN IN`}
+                            type="submit"
+                        />
                     </form>
                 </div>
                 <div className="">

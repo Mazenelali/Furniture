@@ -58,6 +58,7 @@ function Navbar() {
     return (
         <nav
             className={`w-full h-20 flex absolute top-0 z-20 transition duration-300 bg-transparent`}
+            data-aos="fade-down"
         >
             <div className="basis-1/5 text-5xl flex items-center text-white font-extrabold justify-center">
                 <Link href="/"> My furino</Link>
