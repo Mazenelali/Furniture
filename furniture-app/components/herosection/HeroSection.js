@@ -1,4 +1,16 @@
+"use client"
+import AOS from "aos";
+import { useEffect } from "react";
+import "aos/dist/aos.css";
+
 function HeroSection() {
+
+    useEffect(() => {
+        AOS.init({
+            duration: 800,
+            once: false,
+        });
+    }, []);
     return (
         <div
             className="w-full h-[850px] bg-cover relative"
@@ -16,7 +28,7 @@ function HeroSection() {
                         Discover our exclusive collection of handcrafted
                         furniture.
                     </p>
-                    <div className="flex space-x-4">
+                    <div className="flex space-x-4" data-aos="fade-up">
                         <button className="bg-primary text-white hover:bg-primary-dark font-semibold py-3 px-8 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105">
                             Explore
                         </button>

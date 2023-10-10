@@ -14,6 +14,7 @@ module.exports = {
       },
       colors : {
         primary : "#eabf7c",
+        accsent:"#b78a48",
         second : "#f5f5f5"
       }
     },

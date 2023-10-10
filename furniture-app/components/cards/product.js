@@ -17,10 +17,10 @@ function ProductCard() {
                 </div>
                 <div className="absolute bottom-0 w-full h-0 bg-slate-600 opacity-10 rounded-2xl transition-all group-hover:h-[300px]"></div>
                 <div className="w-14 h-14 rounded-full absolute -bottom-5 right-[35%]  translate-x-1/2 translate-y-1/2  bg-transparent  transition-all flex items-center justify-center group-hover:bg-primary group-hover:-bottom-8 ">
-                <FaPlus className=" text-white text-2xl" />
+                <FaPlus className=" text-transparent group-hover:text-white text-2xl" />
                 </div>
                 <div className="w-14 h-14 rounded-full absolute -bottom-5 right-[70%]  translate-x-1/2 translate-y-1/2  bg-transparent  transition-all flex items-center justify-center group-hover:bg-primary group-hover:-bottom-8 ">
-                <MdFavorite className=" text-white text-2xl" />
+                <MdFavorite className=" text-transparent group-hover:text-white text-2xl" />
                 </div>
 
                 <div className="basis-2/5 text-center">
