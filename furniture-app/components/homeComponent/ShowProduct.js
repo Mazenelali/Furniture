@@ -1,8 +1,11 @@
 import Botton from "../botton/Botton";
 import ProductCard from "../cards/product";
+import {requests} from "../../util/ApiRequests"
 
-function ShowProduct() {
-    const product = [1,1,1,1]
+async function ShowProduct() {
+
+    const data = await requests.getFirstProduct()
+
     return (
         <div className=" w-full gap-10 min-h-[600px] py-20 pt-32   flex px-40">
             <div className=" basis-1/5">
@@ -17,8 +20,8 @@ function ShowProduct() {
                 <Botton text="Explore"/>
             </div>
             <div className=" basis-4/5 flex justify-between">
-                {product.map((ele , index)=>{
-                   return <ProductCard key={index}/>
+                {data.data.map((ele , index)=>{
+                    return <ProductCard key={index} data={ele}/>
                 })}
             </div>
         </div>

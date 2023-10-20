@@ -104,12 +104,14 @@ function WhyChooseUs() {
             className=" w-[500px] h-[500px]  absolute "
             width={300}
             height={500}
+            alt=""
         />
         <Image
             src="/assets/images/why-choose-us-img.jpg"
             className=" w-full p-24 relative z-10 rounded-[200px] "
             width={300}
             height={500}
+            alt=""
         />
     </div>
 </div> );

@@ -19,6 +19,7 @@ function WeHelp() {
                 width={400}
                 height={400}
                 className=" absolute -top-20 -left-10"
+                alt=""
             />
             <div
                 className=" basis-[40%] w-[400px] bg-cover bg-center rounded-[20px] relative"

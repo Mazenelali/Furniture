@@ -5,7 +5,7 @@ import WeHelp from "@/components/homeComponent/WeHelp";
 
 export default function Home() {
     return (
-        <main className="  bg-[#f5f5f5]">
+        <main>
             <HeroSection />
             <ShowProduct />
             <WhyChooseUs />
